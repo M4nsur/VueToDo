@@ -10,14 +10,19 @@
     <div id="todoWrapper">
         <h1>TODO-LIST</h1>
         <input type="text" 
-        v-on:input="inputHandler"
-        v-bind:value="inputValue"
-        v-on:keypress.enter="addNote"
-        v-bind:placeholder="myPl">
+        @input="inputHandler"
+        :value="inputValue"
+        @keypress.enter="addNote"
+        :placeholder="myPl">
         <p>{{warning}}</p>
-        <p><button v-on:click="addNote">Добавить</button></p>
-        <p v-for="(note, index) in noteArr">{{note}} 
-        <button v-on:click="deleteNote(index)">X</button></p>
+        <p><button @click="addNote">Добавить</button></p>
+        <div v-if="noteArr.length !== 0">
+            <p v-for="(note, index) in noteArr">
+                {{note}} 
+                <button @click="deleteNote(index)">X</button>
+            </p>
+        </div> 
+        <div v-else>Заметок нет</div>
     </div>
     <script src="https://unpkg.com/vue@next"></script>
     <script src="./vueApp.js"></script>
