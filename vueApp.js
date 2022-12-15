@@ -24,6 +24,12 @@ const Todo = {
       this.noteArr.splice(index, 1);
     },
   },
+  computed: {
+    doublCount() {
+      console.log(1);
+      return this.noteArr.length;
+    },
+  },
 };
 
 Vue.createApp(Todo).mount("#todoWrapper");
