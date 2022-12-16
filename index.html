@@ -5,9 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>[v-cloak] {
+        display: none;
+      }</style>
 </head>
 <body>
-    <div id="todoWrapper">
+    <div id="todoWrapper" v-cloak>
         <h1>TODO-LIST</h1>
         <input type="text" 
         @input="inputHandler"
@@ -16,7 +19,7 @@
         :placeholder="myPl">
         <p>{{warning}}</p>
         <p><button @click="addNote">Добавить</button></p>
-        <div v-if="noteArr.length !== 0">
+        <div v-if="noteArr.length">
             <p v-for="(note, index) in noteArr">
                 {{note}} 
                 <button @click="deleteNote(index)">X</button>
