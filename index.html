@@ -10,25 +10,19 @@
       }</style>
 </head>
 <body>
-    <div id="todoWrapper" v-cloak>
-        <h1>TODO-LIST</h1>
-        <input type="text" 
-        @input="inputHandler"
-        :value="inputValue"
-        @keypress.enter="addNote"
-        :placeholder="myPl">
-        <p>{{warning}}</p>
-        <p><button @click="addNote">Добавить</button></p>
-        <div v-if="noteArr.length">
-            <p v-for="(note, index) in noteArr">
-                {{note}} 
-                <button @click="deleteNote(index)">X</button>
-            </p>
-        </div> 
-        <div v-else>Заметок нет</div>
-        <div>кол.заметок: {{doublCount}}</div>
+    <div id="mainWrapper" v-cloak>
+        <h1>Notes</h1>
+        <form @submit.prevent="checkSubmit">
+            <input required @click.prevent type="text" v-model="formValue.value" :placeholder="formValue.placeholder">
+            <br>
+            <button>Добавить</button>
+        </form>
+        <br>
+        <div v-for="(note, index) in notes" :key="index">
+            <p>{{note}} <button @click="deleteNote(index)">X</button></p>
+        </div>
     </div>
-    <script src="https://unpkg.com/vue@next"></script>                                   
-    <script src="./vueApp.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="./appVue.js"></script>
 </body>
 </html>
