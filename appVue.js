@@ -9,6 +9,14 @@ const App = {
     };
   },
 
+  watch: {
+    notes: {
+      handler: function (val) {
+        console.log("тест");
+      },
+      deep: true,
+    },
+  },
   methods: {
     checkSubmit() {
       console.log("есть контакт");
