@@ -9,17 +9,30 @@ const App = {
     };
   },
 
+  mounted() {
+    this.getNotes(); // при монтировании запускаем метод getNotes
+  },
+
   watch: {
+    // мы следим за массивом notes, если в нем произошли какие-то изменения, то мы запускаем handler функцию
     notes: {
-      handler: function (val) {
-        console.log("тест");
+      handler: function (uptList) {
+        localStorage.setItem("notes", JSON.stringify(uptList)); //добавляем элементы массива "notes" в localStorage
       },
-      deep: true,
+      deep: true, //глубокая проверка, следим за элементами массива
     },
   },
   methods: {
-    checkSubmit() {
-      console.log("есть контакт");
+    getNotes() {
+      //метод getNotes присваиет данные из localStorage к массиву notes
+      const localDate = localStorage.getItem("notes");
+      if (localDate) {
+        this.notes = JSON.parse(localDate);
+      }
+    },
+
+    addSubmit() {
+      //метод пушит данные из inputa в массив notes
       this.notes.push(this.formValue.value);
       this.formValue.value = "";
     },
