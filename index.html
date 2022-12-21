@@ -12,7 +12,7 @@
 <body>
     <div id="mainWrapper" v-cloak>
         <h1>Notes</h1>
-        <form @submit.prevent="checkSubmit">
+        <form @submit.prevent="addSubmit">
             <input required @click.prevent type="text" v-model="formValue.value" :placeholder="formValue.placeholder">
             <br>
             <button>Добавить</button>
