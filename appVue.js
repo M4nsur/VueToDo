@@ -1,18 +1,17 @@
 const App = {
   data() {
     return {
-      formValue: {
+      objValue: {
         value: "",
         placeholder: "Введите текст",
       },
       notes: [],
+      changeValue: "",
     };
   },
-
   mounted() {
     this.getNotes(); // при монтировании запускаем метод getNotes
   },
-
   watch: {
     // мы следим за массивом notes, если в нем произошли какие-то изменения, то мы запускаем handler функцию
     notes: {
@@ -30,15 +29,36 @@ const App = {
         this.notes = JSON.parse(localDate);
       }
     },
-
     addSubmit() {
       //метод пушит данные из inputa в массив notes
-      this.notes.push(this.formValue.value);
-      this.formValue.value = "";
+      let note = {
+        value: this.objValue.value,
+        change: false,
+      };
+      this.notes.push(note);
+      this.objValue.value = "";
     },
-
     deleteNote(index) {
       this.notes.splice(index, 1);
+    },
+    onDoubleClick(note) {
+      for (let i = 0; i < this.notes.length; i++) {
+        if (this.notes[i].change === true) {
+          this.notes[i].change = false;
+        }
+      }
+      note.change = true;
+    },
+    acceptChange(note) {
+      if (this.changeValue) {
+        note.value = this.changeValue;
+        this.changeValue = "";
+        note.change = false;
+      } else note.change = false;
+    },
+    canselChange(note) {
+      note.change = false;
+      this.changeValue = "";
     },
   },
 };

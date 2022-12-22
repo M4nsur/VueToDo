@@ -1,0 +1,34 @@
+[v-cloak] {
+    display: none;
+  }
+
+#mainWrapper {
+    width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.btnStn {
+    background: none;
+    border-style: none;
+    
+}
+
+.btnStn:hover {
+    cursor: pointer;
+
+}
+
+.changeInput {
+    width: 150px;
+}
+
+.info {
+    font-style: italic;
+    margin: 0 auto;
+    width: 180px;
+    margin-top: 50px;
+    border-style: solid;
+    border-width: 1px;
+
+}
