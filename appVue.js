@@ -6,12 +6,16 @@ const App = {
         placeholder: "Введите текст",
       },
       notes: [],
-      changeValue: "",
+      newValue: "",
     };
   },
   mounted() {
     this.getNotes(); // при монтировании запускаем метод getNotes
+    this.$nextTick(function () {
+      this.returnKeysToFalse();
+    });
   },
+
   watch: {
     // мы следим за массивом notes, если в нем произошли какие-то изменения, то мы запускаем handler функцию
     notes: {
@@ -21,6 +25,7 @@ const App = {
       deep: true, //глубокая проверка, следим за элементами массива
     },
   },
+
   methods: {
     getNotes() {
       //метод getNotes присваиет данные из localStorage к массиву notes
@@ -43,22 +48,30 @@ const App = {
     },
     onDoubleClick(note) {
       for (let i = 0; i < this.notes.length; i++) {
-        if (this.notes[i].change === true) {
-          this.notes[i].change = false;
-        }
+        this.notes[i].change = false;
       }
       note.change = true;
+      this.wayStationOfOldValue(note);
     },
     acceptChange(note) {
-      if (this.changeValue) {
-        note.value = this.changeValue;
-        this.changeValue = "";
+      if (this.newValue) {
+        note.value = this.newValue;
+        this.newValue = "";
         note.change = false;
       } else note.change = false;
     },
     canselChange(note) {
       note.change = false;
       this.changeValue = "";
+    },
+    returnKeysToFalse() {
+      for (let i = 0; i < this.notes.length; i++) {
+        this.notes[i].change = false;
+      }
+    },
+
+    wayStationOfOldValue(note) {
+      return (this.newValue = note.value);
     },
   },
 };

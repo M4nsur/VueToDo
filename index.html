@@ -20,7 +20,7 @@
         <br>
         <div v-for="(note, index) in notes" :key="index">
             <p v-if="note.change === true">
-                    <input @keyup.enter="acceptChange(note)" class="changeInput" type="text" v-model="changeValue" :placeholder="note.value">
+                    <input @keyup.enter="acceptChange(note)" class="changeInput" type="text" v-model="newValue">
                     <button class="btnStn" @click="canselChange(note)">❌</button>
                     <button class="btnStn" @click="acceptChange(note)">✅</button>
             </p>
