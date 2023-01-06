@@ -1,7 +1,7 @@
 <template>
-  <div sendIndexForDelete="index" v-for="(note, index) in items" :key="index">
+  <div sendIndex="index" v-for="(note, index) in items" :key="index">
     <div>
-      {{ note }}
+      {{ note.title }}
     </div>
     <button @click="$emit('sendIndex', index)">🗑️</button>
   </div>
@@ -9,6 +9,7 @@
 
 <script>
 export default {
+  emits: ["sendIndex"],
   props: {
     items: {
       type: Array,

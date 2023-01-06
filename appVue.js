@@ -12,7 +12,7 @@ const App = {
   mounted() {
     this.getNotes(); // при монтировании запускаем метод getNotes
     this.$nextTick(function () {
-      this.returnKeysToFalse();
+      this.changeKeysToFalse();
     });
   },
 
@@ -64,7 +64,7 @@ const App = {
       note.change = false;
       this.changeValue = "";
     },
-    returnKeysToFalse() {
+    changeKeysToFalse() {
       for (let i = 0; i < this.notes.length; i++) {
         this.notes[i].change = false;
       }

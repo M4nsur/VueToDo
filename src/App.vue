@@ -1,26 +1,46 @@
 <template>
   <div class="mainWrapper">
     <FormComp @sendValue="addNote" />
-    <Notes  @sendIndex="deleteNote" :items="notes" />
+    <Notes @sendIndex="deleteNote" :items="notes" />
   </div>
 </template>
 
 <script>
 import FormComp from "@/components/Form.vue";
 import Notes from "@/components/Notes.vue";
+
 export default {
   components: {
     FormComp,
     Notes,
   },
+
+  // mounted() {
+  //   this.getNotes(); // при монтировании запускаем метод getNotes
+  //   this.$nextTick(function () {
+  //     this.changeKeysToFalse();
+  //   });
+  // },
+
+  watch: {
+    // мы следим за массивом notes, если в нем произошли какие-то изменения, то мы запускаем handler функцию
+    notes: {
+      handler: function (uptList) {
+        localStorage.setItem("notes", JSON.stringify(uptList)); //добавляем элементы массива "notes" в localStorage
+      },
+      deep: true, //глубокая проверка, следим за элементами массива
+    },
+  },
+
   data() {
     return {
-      notes: ["привет", "здравствуй", "оптат"],
+      notes: [],
     };
   },
+
   methods: {
-    addNote(payload) {
-      this.notes.push(payload);
+    addNote(note) {
+      this.notes.push(note);
     },
     deleteNote(i) {
       this.notes.splice(i, 1);
