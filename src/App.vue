@@ -2,11 +2,7 @@
 <template>
   <div class="mainWrapper">
     <FormComp @sendValue="addNote" />
-    <Notes
-      @sendindexForChange="handleChange"
-      @sendIndexForDelete="deleteNote"
-      :items="notes"
-    />
+    <Notes @sendIndex="deleteNote" :items="notes" />
   </div>
 </template>
 
@@ -20,12 +16,12 @@ export default {
     Notes,
   },
 
-  // mounted() {
-  //   this.getNotes(); // при монтировании запускаем метод getNotes
-  //   this.$nextTick(function () {
-  //     this.changeKeysToFalse();
-  //   });
-  // },
+  mounted() {
+    this.getNotes(); // при монтировании запускаем метод getNotes
+    this.$nextTick(function () {
+      this.changeKeysToFalse();
+    });
+  },
 
   watch: {
     // мы следим за массивом notes, если в нем произошли какие-то изменения, то мы запускаем handler функцию
@@ -44,15 +40,22 @@ export default {
   },
 
   methods: {
+    getNotes() {
+      //метод getNotes присваиет данные из localStorage к массиву notes
+      const localDate = localStorage.getItem("notes");
+      if (localDate) {
+        this.notes = JSON.parse(localDate);
+      }
+    },
     addNote(note) {
       this.notes.push(note);
     },
     deleteNote(i) {
       this.notes.splice(i, 1);
     },
-    handleChange(this.notes, i) {
-      this.notes.forEach(notes)
-    },
+    changeKeysToFalse() {
+      this.notes.forEach((el) => (el.isChange = false));
+    }
   },
 };
 </script>

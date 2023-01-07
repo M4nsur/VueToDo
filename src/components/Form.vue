@@ -1,6 +1,3 @@
-<!-- eslint-disable no-dupe-keys -->
-<!-- eslint-disable vue/no-dupe-keys -->
-<!-- eslint-disable vue/no-dupe-keys -->
 <template>
   <form @submit.prevent="onSubmit">
     <textarea
