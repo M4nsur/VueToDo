@@ -1,9 +1,9 @@
 <template>
   <div sendIndex="index" v-for="(note, index) in items" :key="index">
-    <div>
+    <div v-if="note.isChange === false" @dblclick="$emit('sendindexForChange', index)">
       {{ note.title }}
+      <button @click="$emit('sendIndexForDelete', index)">🗑️</button>
     </div>
-    <button @click="$emit('sendIndex', index)">🗑️</button>
   </div>
 </template>
 

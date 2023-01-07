@@ -1,7 +1,12 @@
+<!-- eslint-disable vue/no-parsing-error -->
 <template>
   <div class="mainWrapper">
     <FormComp @sendValue="addNote" />
-    <Notes @sendIndex="deleteNote" :items="notes" />
+    <Notes
+      @sendindexForChange="handleChange"
+      @sendIndexForDelete="deleteNote"
+      :items="notes"
+    />
   </div>
 </template>
 
@@ -44,6 +49,9 @@ export default {
     },
     deleteNote(i) {
       this.notes.splice(i, 1);
+    },
+    handleChange(this.notes, i) {
+      this.notes.forEach(notes)
     },
   },
 };

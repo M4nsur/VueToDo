@@ -1,3 +1,6 @@
+<!-- eslint-disable no-dupe-keys -->
+<!-- eslint-disable vue/no-dupe-keys -->
+<!-- eslint-disable vue/no-dupe-keys -->
 <template>
   <form @submit.prevent="onSubmit">
     <textarea
@@ -7,7 +10,7 @@
       v-model="value"
       placeholder="введите текст"
     />
-    <button :disabled="isBtnDisabled" class="btnStn">Add</button>
+    <button :disabled="handleDisabled" class="btnStn">Add</button>
   </form>
 </template>
 
@@ -16,7 +19,6 @@ export default {
   data() {
     return {
       value: "",
-      isBtnDisabled: true,
     };
   },
 
@@ -30,17 +32,12 @@ export default {
   },
 
   computed: {
-    checkValueForBtn(){
-      return this.value
-        ? // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-          (this.isBtnDisabled = false)
-        : // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-          (this.isBtnDisabled = true);
-    },
-
-    // eslint-disable-next-line vue/return-in-computed-property
-    test1() {
-      console.log(this.isBtnDisabled);
+    handleDisabled() {
+      if (this.value.trim()) {
+        return false;
+      } else {
+        return true;
+      }
     },
   },
 };
