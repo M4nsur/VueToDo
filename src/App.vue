@@ -1,21 +1,20 @@
-<!-- eslint-disable vue/no-parsing-error -->
 <template>
+  <HeaderComp />
   <div class="mainWrapper">
-    <FormComp @sendValue="addNote" />
-    <Notes @sendIndex="deleteNote" :items="notes" />
+    <router-view @sendIndex="deleteNote" :items="notes" @sendValue="addNote" />
   </div>
 </template>
 
 <script>
-import FormComp from "@/components/Form.vue";
-import Notes from "@/components/Notes.vue";
+import HeaderComp from "@/components/Header.vue";
+import Notes from "@/components/Pages/Notes.vue";
+// import About from "@/components/Pages/About.vue";
 
 export default {
   components: {
-    FormComp,
+    HeaderComp,
     Notes,
   },
-
   mounted() {
     this.getNotes(); // при монтировании запускаем метод getNotes
     this.$nextTick(function () {
@@ -55,7 +54,7 @@ export default {
     },
     changeKeysToFalse() {
       this.notes.forEach((el) => (el.isChange = false));
-    }
+    },
   },
 };
 </script>

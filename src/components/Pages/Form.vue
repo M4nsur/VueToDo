@@ -1,13 +1,14 @@
 <template>
   <form @submit.prevent="onSubmit">
     <textarea
+      class="inputForNotes"
       required
       @click.prevent
       type="text"
       v-model="value"
       placeholder="введите текст"
     />
-    <button :disabled="handleDisabled" class="btnStn">Add</button>
+    <button class="addNote allBtn" :disabled="handleDisabled">✎</button>
   </form>
 </template>
 
