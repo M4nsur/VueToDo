@@ -16,10 +16,23 @@ a {
   color: black;
 }
 
-.mainWrapper {
+body {
+  height: 100%;
+}
+
+.main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.bodyWraper {
   width: 600px;
   margin: 0 auto;
   text-align: center;
+  flex: 1 1 auto;
+  position: relative;
+  padding-bottom: 50px;
 }
 
 .allBtn {
@@ -50,12 +63,10 @@ a {
 }
 
 .linksWrapper {
-  width: 300px;
   display: flex;
 }
 
 .inputForNotes {
-  resize: none;
   height: 20px;
   width: 300px;
 }
@@ -84,8 +95,26 @@ a {
 }
 
 .descr {
+  font-size: 12px;
+  position: absolute;
+  bottom: 0;
+  left: 133px;
   margin: 0 auto;
-  margin-top: 400px;
   border: 1px solid;
-  width: 400px;
+  width: 300px;
+}
+
+.footerWraper {
+  margin-top: 10px;
+  background-color: Azure;
+  height: 40px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+  box-sizing: border-box;
+}
+
+.socialIcons {
+  width: 15px;
+  margin-right: 5px;
 }/*# sourceMappingURL=main.css.map */

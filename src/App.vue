@@ -1,19 +1,25 @@
 <template>
-  <HeaderComp />
-  <div class="mainWrapper">
-    <router-view @sendIndex="deleteNote" :items="notes" @sendValue="addNote" />
+  <div class="main">
+    <HeaderComp />
+    <div class="bodyWraper">
+      <router-view
+        @sendIndex="deleteNote"
+        @sendValue="addNote"
+        :items="notes"
+      />
+    </div>
+    <FooterComp />
   </div>
 </template>
 
 <script>
 import HeaderComp from "@/components/Header.vue";
-import Notes from "@/components/Pages/Notes.vue";
-// import About from "@/components/Pages/About.vue";
+import FooterComp from "@/components/Footer.vue";
 
 export default {
   components: {
     HeaderComp,
-    Notes,
+    FooterComp,
   },
   mounted() {
     this.getNotes(); // при монтировании запускаем метод getNotes

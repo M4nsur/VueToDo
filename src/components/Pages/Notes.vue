@@ -32,7 +32,7 @@
     </div>
   </div>
   <div class="descr">
-    Чтобы редактировать заметку совершите DoubleClick по ней
+    Чтобы редактировать заметку сделайте DoubleClick по ней
   </div>
 </template>
 

@@ -11,7 +11,6 @@
     <button class="addNote allBtn" :disabled="handleDisabled">✎</button>
   </form>
 </template>
-
 <script>
 export default {
   data() {
