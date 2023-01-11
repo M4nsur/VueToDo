@@ -8,7 +8,7 @@
       <a href="https://t.me/iz1890" target="_blank"
         ><img class="socialIcons" src="@/assets/icons/telegram.png" alt=""
       /></a>
-      <a href="mailto:vakhabov.mans@gmail.com?subject=Мансур" target="_blank"
+      <a href="#" target="_blank"
         ><img class="socialIcons" src="@/assets/icons/mail.png" alt=""
       /></a>
     </div>
