@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent="onSubmit">
-    <textarea
+    <input
       class="inputForNotes"
       required
       @click.prevent
